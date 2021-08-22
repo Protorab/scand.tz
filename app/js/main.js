@@ -11,7 +11,7 @@ import { modalClose } from "./functions/modalWindow";
 import modalWindowInit from "./functions/modalWindowInit";
 
 // import  btns functions
-import btnsFunc from "./functions/btns";
+// import btnsFunc from "./functions/btns";
 
 // import lazyLoading functions
 import observer from "./functions/lazyLoading";
@@ -35,10 +35,12 @@ import lazyBg from "./functions/lazyBg";
 // import menuDropdown from "./functions/menuDropdown";
 
 // import showVisible
-import showVisible from "./functions/showVisible";
+// import showVisible from "./functions/showVisible";
 
 // import truncate
 import truncate from "./functions/truncate";
+import markupCard from "./functions/markupCard";
+// import moveJs from "./functions/move";
 document.addEventListener("DOMContentLoaded", () => {
   // variable start
   const phoneInput = document.querySelectorAll("input[type=tel]");
@@ -52,26 +54,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const lazyImages = document.querySelectorAll(
     "img[data-lazy-src],source[data-lazy-srcset] "
   );
-  const animateItems = document.querySelectorAll(".animate");
+  // const animateItems = document.querySelectorAll(".animate");
   const advantagesCardsText = document.querySelectorAll(
     ".advantages-card__text p"
   );
-
+  // const moveObjects = document.querySelectorAll(".move-obj");
   const preloaderProgress = document.querySelector(".preloader__progress");
+
   // variable end
 
   // function call start
   // ytPlayer();
   lazyBg();
   modalWindowInit();
-  btnsFunc();
-  showVisible();
-  window.onscroll = showVisible;
+  // btnsFunc();
+  // showVisible();
+  // window.onscroll = showVisible;
   // menuDropdown();
   // customSelectFunc();
   // collapsibleFunc();
   // tabsChange();
+  markupCard();
   // function call end
+  // if (moveObjects.length > 0) {
+  //   moveJs(moveObjects);
+  // }
   if (advantagesCardsText.length > 0) {
     advantagesCardsText.forEach((element) => {
       truncate(element, 125);
@@ -92,15 +99,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
   }, 100);
   //animate not scroll items
-  if (animateItems.length > 0) {
-    animateItems.forEach((item) => {
-      if (!item.classList.contains("scroll")) {
-        setInterval(() => {
-          item.classList.add("__show");
-        }, 1000);
-      }
-    });
-  }
+  // if (animateItems.length > 0) {
+  //   animateItems.forEach((item) => {
+  //     if (!item.classList.contains("scroll")) {
+  //       setInterval(() => {
+  //         item.classList.add("__show");
+  //       }, 1000);
+  //     }
+  //   });
+  // }
   //preventDefault last lastBreadcrumb item click
   if (breadcrumb) {
     let lastBreadcrumb = breadcrumb.lastElementChild;

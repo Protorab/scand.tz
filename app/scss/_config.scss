@@ -532,19 +532,6 @@ section,
     left: 0;
   }
 
-  span {
-    position: absolute;
-    @include _transition(all, 0.35s);
-    display: block;
-    background: rgba(255, 255, 255, 0.35);
-    @include _borderRadius(50%);
-    animation-name: fullSize;
-    animation-timing-function: linear;
-    animation-duration: 0.5s;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-  }
-
   &::before {
     background: $accentThirdColor;
     z-index: -1;
@@ -572,7 +559,18 @@ section,
     }
   }
 }
-
+.blink {
+  position: absolute;
+  @include _transition(all, 0.35s);
+  display: block;
+  background: rgba($mainColor, 0.5);
+  @include _borderRadius(50%);
+  animation-name: fullSize;
+  animation-timing-function: linear;
+  animation-duration: 0.5s;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
 .bg {
   // .bg-element {
 

@@ -886,32 +886,6 @@ section,
   left: 0;
 }
 
-.btn span {
-  position: absolute;
-  transition: all ease-in-out .35s;
-  -webkit-transition: all ease-in-out .35s;
-  -moz-transition: all ease-in-out .35s;
-  -ms-transition: all ease-in-out .35s;
-  -o-transition: all ease-in-out .35s;
-  display: block;
-  background: rgba(255,255,255,0.35);
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  -webkit-animation-name: fullSize;
-  animation-name: fullSize;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
 .btn::before {
   background: #e9e9ec;
   z-index: -1;
@@ -927,6 +901,32 @@ section,
   -webkit-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
+}
+
+.blink {
+  position: absolute;
+  transition: all ease-in-out .35s;
+  -webkit-transition: all ease-in-out .35s;
+  -moz-transition: all ease-in-out .35s;
+  -ms-transition: all ease-in-out .35s;
+  -o-transition: all ease-in-out .35s;
+  display: block;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  -webkit-animation-name: fullSize;
+  animation-name: fullSize;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 .bg-element {
@@ -1200,7 +1200,7 @@ label {
 
 @font-face {
   font-family: "PTSans";
-  src: url("../fonts/PTSans-Bold");
+  src: url("../fonts/PTSans-Bold.woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -2449,11 +2449,25 @@ ol:not([class]) .item-number {
   box-shadow: 0px 4px 15px rgba(0,0,0,0.12);
   position: relative;
   color: #6b6b6c;
+  overflow: hidden;
+  transition: all ease-in-out .65s;
+  -webkit-transition: all ease-in-out .65s;
+  -moz-transition: all ease-in-out .65s;
+  -ms-transition: all ease-in-out .65s;
+  -o-transition: all ease-in-out .65s;
+}
+
+.markup-card .blink {
+  background: rgba(63,226,151,0.5);
 }
 
 .markup-card.__verify {
   background: #3fe297;
   color: #fff;
+}
+
+.markup-card.__verify .blink {
+  background: rgba(255,255,255,0.5);
 }
 
 .markup-card__icon {

@@ -22,9 +22,17 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
     position: relative;
     color: $textSecondColor;
+    overflow: hidden;
+    @include _transition(all, 0.65s);
+    .blink {
+      background: rgba(#3fe297, 0.5);
+    }
     &.__verify {
       background: #3fe297;
       color: $mainColor;
+      .blink {
+        background: rgba($mainColor, 0.5);
+      }
     }
     // .markup-card__icon {
     &__icon {
