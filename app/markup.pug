@@ -17,11 +17,33 @@ html(lang="ru")
 
     //page-main start
     main.main.page-main 
-      //top section start
-      include ./includes/parts/sections/top-section.pug
-      //top section end
-      
+    
       .section
+        //markup start
+        .markup
+          include ./includes/mixins/markup-card
+          +markup-card(
+            "Level 1",
+            "Requirements",
+            [
+              ["Confirm E-mail"],
+              ["Confirm phone number"],
+              ["Enter personal details"]
+
+            ],
+            "Annual turnover - up to 2.500 EUR",
+            "verify")
+          +markup-card(
+            "Level 2",
+            "Requirements",
+            [
+              ["Upload photo ID"],
+              ["Upload Utility Bill"]
+
+            ],
+            "Annual turnover - up to 30.000 EUR")
+        //markup end
+        
 
     //page-main end
     

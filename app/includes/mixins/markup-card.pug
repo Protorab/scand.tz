@@ -1,0 +1,13 @@
+mixin markup-card(title,subtitle,listItems,annotation,verify)
+  article.markup-card(class=`${verify ? "__verify" : ""}`)
+    span.markup-card__icon
+      i.markup-card__icon-image
+        include ./../../img/icons/icon-star.svg
+    h5.markup-card__title!=title
+    h6.markup-card__subtitle!=subtitle
+    ul.markup-card__list
+      each listItem, idx in listItems
+        - var count = idx+1
+        - var itemTitle = listItem[0]
+        li.markup-card__item!=itemTitle
+    p.markup-card__annotation!=annotation
