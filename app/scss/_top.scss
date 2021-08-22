@@ -1,0 +1,100 @@
+.top {
+  // .top-section {
+  &-section {
+    justify-content: center;
+    flex-direction: column;
+    // .top-section__wrapper {
+    &__wrapper {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-self: center;
+      justify-self: center;
+      overflow: hidden;
+      @include adaptive(margin-bottom, 65, 55, 0);
+      @include _transition(all, 1s);
+      @media only screen and (max-width: 1152px) {
+        // flex-direction: column;
+      }
+    }
+    // .top-section__content {
+    &__content {
+      display: flex;
+      flex-direction: column;
+      @include coll(2.3, 30px);
+      // @include _transition(all, 0.55s);
+      @include _transition(all, 1s);
+      @include adaptive(margin-right, 60, 40, 0);
+      transition-delay: 0.055s;
+      .--fixed & {
+        transform: translate(-240px, 0px);
+        opacity: 0;
+      }
+      @media only screen and (max-width: 1152px) {
+        width: 100%;
+        flex: 1 1 100%;
+        margin-right: 0;
+        @include adaptive(margin-bottom, 55, 40, 0);
+      }
+      @media only screen and (max-width: 600px) {
+        color: $mainColor;
+      }
+    }
+    // .top-section__title {
+    &__title {
+      @extend .t1;
+      font-weight: bold;
+      @include adaptive(margin-bottom, 40, 30, 0);
+      @media only screen and (max-width: 1152px) {
+        width: 60%;
+      }
+      @media only screen and (max-width: 600px) {
+        color: $mainColor;
+        width: 100%;
+      }
+    }
+    // .top-section__text {
+    &__text {
+      @include adaptive(margin-bottom, 40, 30, 0);
+      color: $textSecondColor;
+      @media only screen and (min-width: 800px) {
+        @include adaptive(margin-bottom, 40, 60, 0);
+      }
+      @media only screen and (max-width: 1152px) {
+        width: 90%;
+      }
+      @media only screen and (max-width: 600px) {
+        color: $mainColor;
+        width: 100%;
+      }
+    }
+    // .top-section__link {
+    &__link {
+    }
+    // .top-section__picture {
+    &__picture {
+      display: flex;
+      flex-direction: column;
+      @include coll(2.4, 30px);
+      width: 100%;
+      @include adaptive(height, 405, 255, 0);
+      overflow: hidden;
+      @include _borderRadius(20px 0 20px 20px);
+      // @include _transition(all, 0.55s);
+      @include _transition(all, 1s);
+
+      transition-delay: 0.055s;
+      .--fixed & {
+        transform: translate(240px, 0px);
+        opacity: 0;
+      }
+      @media only screen and (max-width: 1152px) {
+        width: 100%;
+        flex: 1 1 100%;
+        @include _borderRadius(20px 20px 0px 20px);
+      }
+      @media only screen and (max-width: 600px) {
+        @include _borderRadius(20px);
+      }
+    }
+  }
+}

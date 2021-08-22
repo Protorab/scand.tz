@@ -33,9 +33,12 @@ import lazyBg from "./functions/lazyBg";
 
 // import menuDropdown function
 // import menuDropdown from "./functions/menuDropdown";
+
 // import showVisible
 import showVisible from "./functions/showVisible";
 
+// import truncate
+import truncate from "./functions/truncate";
 document.addEventListener("DOMContentLoaded", () => {
   // variable start
   const phoneInput = document.querySelectorAll("input[type=tel]");
@@ -50,7 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "img[data-lazy-src],source[data-lazy-srcset] "
   );
   const animateItems = document.querySelectorAll(".animate");
+  const advantagesCardsText = document.querySelectorAll(
+    ".advantages-card__text p"
+  );
 
+  const preloaderProgress = document.querySelector(".preloader__progress");
   // variable end
 
   // function call start
@@ -65,7 +72,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // collapsibleFunc();
   // tabsChange();
   // function call end
+  if (advantagesCardsText.length > 0) {
+    advantagesCardsText.forEach((element) => {
+      truncate(element, 125);
+    });
+  }
 
+  setTimeout(() => {
+    let body = document.querySelector("body");
+    body.classList.add("__loading");
+    body.classList.add("--fixed");
+    for (let i = 0; i < 100; i++) {
+      preloaderProgress.value++;
+    }
+    window.setTimeout(function () {
+      body.classList.add("__load");
+      body.classList.remove("__loading");
+      body.classList.remove("--fixed");
+    }, 500);
+  }, 100);
   //animate not scroll items
   if (animateItems.length > 0) {
     animateItems.forEach((item) => {

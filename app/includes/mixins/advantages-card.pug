@@ -1,0 +1,10 @@
+mixin advantages-card(imgPath,title)
+  article.advantages-card
+    include ./picture
+    +picture(
+      imgPath,
+      title,
+      "advantages-card")
+    h6.advantages-card__title!=title
+    .advantages-card__text 
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

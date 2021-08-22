@@ -1,34 +1,25 @@
 // USER VARIABLES SECTION
-$accent: #5bd2f3; // Accent Color
-$accentSecond: #e7552b; // Accent Second Color
-$accentThird: #f0a21a; // Accent Third Color
-$mainColor: #1b556f; // Body Background Color
+$accentColor: #0b7572; // Accent Color
+$accentSecondColor: #ffce50; // Accent Second Color
+$accentThirdColor: #e9e9ec; // Accent Third Color
+$mainColor: #ffffff; // Body Background Color
 $fontSize: 10px; // Body Font Size
-$textColor: #eaf2f5; // Text Color
-$textSecondColor: #b0b1b1; // Text Color
+$textColor: #363738; // Text Color
+$textSecondColor: #6b6b6c; // Text Color
 $lineHeight: 1.65; // Document Line Height
-$userFont: Roboto, sans-serif; // User Font Family
+$userFont: Exo2, sans-serif; // User Font Family
+$userAltFont: PTSans, sans-serif; // User Alt Font Family
 $systemFont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Font Family
-$maxWidth: 1920;
-$maxWidthContainer: 1300;
+$maxWidth: 1440;
+$maxWidthContainer: 1280;
 
-// FONTS LOAD SECTION
-@include font("Roboto", normal, 400, "../fonts/roboto-regular-webfont.woff2");
-@include font("Roboto", italic, 400, "../fonts/roboto-italic-webfont.woff2");
-@include font("Roboto", normal, 700, "../fonts/roboto-bold-webfont.woff2");
-@include font(
-  "Roboto",
-  italic,
-  700,
-  "../fonts/roboto-bolditalic-webfont.woff2"
-);
 // ZEROING SECTION
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   -webkit-appearance: none;
-  scrollbar-color: #363130 #f2f2f2;
+  scrollbar-color: $accentColor $accentSecondColor;
   scrollbar-width: thin;
 
   &::before,
@@ -75,7 +66,7 @@ $maxWidthContainer: 1300;
 
   &::-webkit-scrollbar-thumb {
     cursor: pointer;
-    background: #363130;
+    background: $textSecondColor;
 
     border-radius: 0.1rem;
     -webkit-border-radius: 0.1rem;
@@ -91,7 +82,7 @@ $maxWidthContainer: 1300;
 
   &::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
-    background: #878686;
+    background: $textColor;
   }
 }
 
@@ -138,10 +129,6 @@ html {
   }
 }
 
-@-ms-viewport {
-  width: device-width;
-}
-
 body {
   font-family: $userFont;
   font-size: $fontSize;
@@ -164,221 +151,8 @@ body {
   }
 }
 
-footer,
-header,
-section,
-.section {
-  width: 100%;
-  display: flex;
-  .--fixed & {
-    filter: blur(10px);
-  }
-}
-
-.wrapper {
-  max-width: 1650px;
-  width: calc(100% - 80px);
-  margin: 0 auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-
-  @media only screen and (min-width: 1680px) {
-    width: 100%;
-  }
-
-  @media only screen and (max-width: 1024px) {
-    width: calc(100% - 55px);
-  }
-
-  @media only screen and (max-width: 600px) {
-    width: calc(100% - 30px);
-  }
-}
-
-// .schema-org {
-//   position: absolute;
-//   visibility: hidden;
-//   opacity: 0;
-//   overflow: hidden;
-//   width: 0;
-//   height: 0;
-//   z-index: -9999;
-//   left: 0;
-//   top: 0;
-// }
-
-.img {
-  //.img--full
-  &--fullW {
-    width: 100%;
-    height: auto;
-  }
-  // .img--center
-  &--center {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-}
-
-.tab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-
-  // .tab__container
-  &__container {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  // .tab__content
-  &__content {
-    max-height: 0;
-    overflow: hidden;
-    @include _transition(all, 0.35s);
-
-    &.--active {
-      max-height: unset;
-    }
-  }
-
-  // .tab__wrapper
-  &__wrapper {
-    opacity: 0;
-    @include _transition(all, 0.35s);
-    transform: translate(0, -100%);
-
-    .--active > & {
-      opacity: 1;
-      transform: translate(0, 0%);
-    }
-  }
-}
-input,
-textarea {
-  @include _transition(all, 0.5s);
-  @extend .p;
-  @include _borderRadius(5px);
-  padding: 10px;
-  height: 35px;
-  border: none;
-  background: #060b0d;
-  color: $textColor;
-}
-
-textarea {
-  height: 150px;
-}
-// .arrow
-.arrow {
-  position: relative;
-  height: 10px;
-  width: 10px;
-  cursor: pointer;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    width: 0.15rem;
-    height: 100%;
-    transition: all 0.5s;
-  }
-
-  &::before {
-    left: -2.7px;
-    transform: rotate(-45deg);
-    background-color: $textSecondColor;
-  }
-
-  &::after {
-    left: 2.7px;
-    transform: rotate(45deg);
-    background-color: $textSecondColor;
-  }
-
-  .open &::before,
-  .active &::before {
-    left: -2.7px;
-    transform: rotate(45deg);
-  }
-
-  .open &::after,
-  .active &::after {
-    left: 2.7px;
-    transform: rotate(-45deg);
-  }
-
-  // .arrow--menu
-  &--menu {
-    // transform: scale(1, -1);
-  }
-}
-
-// .triangle
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 10px solid $textColor;
-  border-bottom: 0px solid transparent;
-  @include _transition(all, 0.5s);
-
-  .open &,
-  .active & {
-    border-top: 0px solid transparent;
-    border-bottom: 10px solid $textColor;
-  }
-}
-
-.main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 105px;
-}
-
-ol {
-  list-style: none;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  margin: -10px;
-  flex-wrap: wrap;
-  width: 100%;
-
-  @media only screen and (min-width: 800px) {
-    margin: get-vw(-10px);
-  }
-}
-
-.coll {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 100%;
-  margin: 10px;
-
-  @media only screen and (min-width: 800px) {
-    width: 100%;
-    @include coll(2, 20px);
-    margin: get-vw(10px);
-  }
+@-ms-viewport {
+  width: device-width;
 }
 
 ::placeholder {
@@ -386,7 +160,7 @@ ol {
 }
 
 ::selection {
-  background-color: $accent;
+  background-color: $accentColor;
   color: #fff;
 }
 
@@ -510,6 +284,227 @@ a {
   }
 }
 
+input,
+textarea {
+  @include _transition(all, 0.5s);
+  @extend .p;
+  @include _borderRadius(5px);
+  padding: 10px;
+  height: 35px;
+  border: none;
+  background: #060b0d;
+  color: $textColor;
+}
+
+textarea {
+  height: 150px;
+}
+footer,
+header,
+section,
+.section {
+  width: 100%;
+  display: flex;
+  position: relative;
+  max-width: 1980px;
+  margin: 0 auto;
+  .--fixed & {
+    // filter: blur(10px);
+  }
+}
+section,
+.section {
+  @include adaptive(padding-top, 100, 75, 0);
+}
+
+.wrapper {
+  width: calc(100% - 166px);
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media only screen and (min-width: 1920px) {
+    max-width: $maxWidth + px;
+  }
+
+  @media only screen and (max-width: $maxWidth + px) {
+    // max-width: $maxWidth + px;
+    max-width: $maxWidthContainer + px;
+  }
+  @media only screen and (min-width: $maxWidthContainer + px) {
+    width: 100%;
+    max-width: $maxWidthContainer + px;
+  }
+  @media only screen and (max-width: $maxWidthContainer + px) {
+    width: 100%;
+    max-width: calc(100% - 140px);
+  }
+
+  @media only screen and (max-width: 1024px) {
+    width: calc(100% - 80px);
+    max-width: 100%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: calc(100% - 20px);
+  }
+}
+
+.img {
+  //.img--full
+  &--fullW {
+    width: 100%;
+    height: auto;
+  }
+  // .img--center
+  &--center {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  // .tab__container
+  &__container {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  // .tab__content
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    @include _transition(all, 0.35s);
+
+    &.--active {
+      max-height: unset;
+    }
+  }
+
+  // .tab__wrapper
+  &__wrapper {
+    opacity: 0;
+    @include _transition(all, 0.35s);
+    transform: translate(0, -100%);
+
+    .--active > & {
+      opacity: 1;
+      transform: translate(0, 0%);
+    }
+  }
+}
+
+// .arrow
+.arrow {
+  position: relative;
+  height: 10px;
+  width: 10px;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 0.15rem;
+    height: 100%;
+    transition: all 0.5s;
+  }
+
+  &::before {
+    left: -2.7px;
+    transform: rotate(-45deg);
+    background-color: $textSecondColor;
+  }
+
+  &::after {
+    left: 2.7px;
+    transform: rotate(45deg);
+    background-color: $textSecondColor;
+  }
+
+  .open &::before,
+  .active &::before {
+    left: -2.7px;
+    transform: rotate(45deg);
+  }
+
+  .open &::after,
+  .active &::after {
+    left: 2.7px;
+    transform: rotate(-45deg);
+  }
+
+  // .arrow--menu
+  &--menu {
+    // transform: scale(1, -1);
+  }
+}
+
+// .triangle
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid $textColor;
+  border-bottom: 0px solid transparent;
+  @include _transition(all, 0.5s);
+
+  .open &,
+  .active & {
+    border-top: 0px solid transparent;
+    border-bottom: 10px solid $textColor;
+  }
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: -10px;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @media only screen and (min-width: 800px) {
+    margin: get-vw(-10px);
+  }
+}
+
+.coll {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+  margin: 10px;
+
+  @media only screen and (min-width: 800px) {
+    width: 100%;
+    @include coll(2, 20px);
+    margin: get-vw(10px);
+  }
+}
+
 .btn {
   @include adaptive(max-width, 180, 180, 0);
   // @include _borderRadius(5px);
@@ -521,7 +516,7 @@ a {
   height: 35px;
   align-items: center;
   justify-content: center;
-  background: $accentThird;
+  background: $accentThirdColor;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -551,7 +546,7 @@ a {
   }
 
   &::before {
-    background: $accentThird;
+    background: $accentThirdColor;
     z-index: -1;
     width: 100%;
     top: 0;
@@ -560,7 +555,7 @@ a {
   &::after {
     // @include _borderRadius(5%);
     top: 50%;
-    background: $accentSecond;
+    background: $accentSecondColor;
     z-index: -1;
     width: 0;
 
@@ -568,7 +563,7 @@ a {
   }
 
   &:hover {
-    // background: $accentSecond;
+    // background: $accentSecondColor;
 
     &::after {
       // width: 400px;
@@ -577,10 +572,99 @@ a {
     }
   }
 }
+
+.bg {
+  // .bg-element {
+
+  &-element {
+    display: inline-block;
+    position: absolute;
+    // @include _transition(all, 0.35s);
+    @include _transition(all, 0.85s);
+
+    // .bg-element__1
+    &__1 {
+      top: 0;
+      right: 0;
+      @include adaptive(width, 600, 175, 0);
+
+      @include adaptive(height, 785, 755, 0);
+
+      // transition-delay: 0.3s;
+      .--fixed & {
+        transform: translate(300px, 0px);
+        opacity: 0;
+      }
+      @media only screen and (max-width: 1152px) {
+        @include adaptive(width, 250, 80, 0);
+
+        @include adaptive(height, 780, 785, 0);
+      }
+      @media only screen and (max-width: 800px) {
+        @include adaptive(height, 780, 654, 0);
+      }
+      @media only screen and (min-width: 600px) {
+      }
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        @include adaptive(height, 785, 855, 0);
+      }
+    }
+  }
+}
+
+.__green {
+  background: $accentColor;
+  color: $accentColor;
+}
+
+.link {
+  display: inline-flex;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  font-weight: bold;
+  z-index: 2;
+  @include adaptive(padding-bottom, 10, 10, 0);
+  @include _transition(all, 0.35s);
+  * {
+    @include _transition(all, 0.35s);
+  }
+  &::before,
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    transform-origin: top left;
+    @include _transition(all, 0.35s);
+  }
+  &::before {
+    background: $accentSecondColor;
+  }
+  &::after {
+    background: $accentColor;
+    transform: scale(0, 1);
+  }
+  &:hover {
+    color: $accentColor;
+    &::before {
+      transform: scale(0, 1);
+    }
+    &::after {
+      transform: scale(1, 1);
+    }
+  }
+}
+
 .t,
 h {
   @for $i from 1 through 6 {
     &#{$i} {
+      font-family: $userAltFont;
       margin: 0;
       padding: 0;
       line-height: 134%;
@@ -591,27 +675,27 @@ h {
   }
 
   &1 {
-    @include adaptive(font-size, 35, 22, 0);
+    @include adaptive(font-size, 52, 28, 0);
   }
 
   &2 {
-    @include adaptive(font-size, 30, 20, 0);
+    @include adaptive(font-size, 48, 28, 0);
   }
 
   &3 {
-    @include adaptive(font-size, 25, 15, 0);
+    @include adaptive(font-size, 40, 25, 0);
   }
 
   &4 {
-    @include adaptive(font-size, 23, 17, 0);
+    @include adaptive(font-size, 36, 22, 0);
   }
 
   &5 {
-    @include adaptive(font-size, 20, 15, 0);
+    @include adaptive(font-size, 28, 20, 0);
   }
 
   &6 {
-    @include adaptive(font-size, 18, 14, 0);
+    @include adaptive(font-size, 20, 18, 0);
   }
 }
 
@@ -621,5 +705,5 @@ li,
 .p,
 label {
   line-height: 1.35;
-  @include adaptive(font-size, 18, 14, 0);
+  @include adaptive(font-size, 16, 15, 0);
 }

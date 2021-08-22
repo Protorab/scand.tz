@@ -1,0 +1,85 @@
+.advantages {
+  @extend .wrapper;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: auto;
+  background: $mainColor;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  @include _borderRadius(20px);
+  @include adaptive(padding-top, 40, 20, 0);
+  @include adaptive(padding-bottom, 40, 20, 0);
+  @include _transition(all, 1s);
+
+  overflow: hidden;
+  opacity: 1;
+  .--fixed & {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  // .advantages-card {
+  &-card {
+    background: $mainColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    @include adaptive(padding-right, 80, 20, 0);
+    @include adaptive(padding-left, 80, 20, 0);
+    @include _transition(all, 0.35s);
+    border-right: 1px solid #d7d7dd;
+
+    &:last-child {
+      border-right: none;
+    }
+    // advantages-card__picture {
+    &__picture {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      @include adaptive(width, 90, 70, 0);
+      @include adaptive(height, 90, 70, 0);
+      @include _borderRadius(50%);
+      @include adaptive(margin-bottom, 25, 15, 0);
+    }
+    // .advantages-card__title {
+    &__title {
+      @include adaptive(margin-bottom, 15, 10, 0);
+      @extend .t6;
+      font-weight: bold;
+    }
+
+    // .advantages-card__text {
+    &__text {
+      color: $textSecondColor;
+    }
+    @media only screen and (max-width: 1152px) {
+      border-right: none;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
+      @include _borderRadius(20px);
+      @include adaptive(padding-top, 30, 0, 0);
+      @include adaptive(padding-bottom, 40, 25, 0);
+      &:first-child {
+        @include adaptive(padding-top, 30, 25, 0);
+      }
+      &:last-child {
+        @include adaptive(padding-bottom, 40, 30, 0);
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      box-shadow: none;
+    }
+  }
+  @media only screen and (max-width: 1152px) {
+    overflow: unset;
+    padding: 0;
+    grid-template-columns: repeat(1, 100%);
+    box-shadow: none;
+    @include adaptive(grid-row-gap, 15, 0, 0);
+  }
+  @media only screen and (max-width: 600px) {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    @include _borderRadius(20px);
+  }
+}
